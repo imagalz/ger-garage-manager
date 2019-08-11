@@ -1,0 +1,91 @@
+<h2>Service</h2>
+<br /> <br />
+<form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="booking">Booking Number:</label>
+        <input type="text" formControlName="booking" class="form-control" disabled/>
+    </div>
+
+    <div class="form-group">
+        <label for="employees">Employee</label>
+        <select formControlName="employees" id="employees">
+            <option *ngFor="let employee of employees; let i = index" [value]="employee.id">
+            {{employee.first_name}} {{employee.last_name}} - {{employee.mobile_phone}} 
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="bookedDate">Date of Booking</label>
+        <input type="text" formControlName="bookedDate" class="form-control" disabled />
+    </div>
+
+    <div class="form-group">
+        <label for="estimatedDate">Estimated Finish Date</label>
+        <input type="text" formControlName="estimatedDate" class="form-control" disabled />
+    </div>
+
+    <div class="form-group">
+        <label for="vehicle">Vehicle</label>
+        <input type="text" formControlName="vehicle" class="form-control" disabled />
+    </div>
+
+    <div class="form-group">
+        <label for="serviceType">Service Type</label>
+        <select formControlName="serviceType" id="serviceTypes">
+            <option *ngFor="let type of serviceTypes; let i = index" [value]="type.id">
+            {{type.name}} - {{type.cost}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="observation">Extra Information</label>
+        <input type="text" formControlName="observation" class="form-control" disabled/>
+    </div>
+
+    <div class="form-group">
+        <label for="items">Vehicle Items</label>
+        <select formControlName="items" id="items" >
+            <option *ngFor="let item of items; let i = index" [value]="item.id">
+            {{item.name}} - {{item.cost}}
+            </option>
+        </select>
+    </div>
+    
+
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select formControlName="status" id="status">
+            <option *ngFor="let s of status; let i = index" [value]="s.id">
+            {{s.name}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="startedDate">Date</label>
+        <input type="text" formControlName="startedDate" class="form-control" disabled/>
+    </div>
+
+    <div class="form-group">
+        <label for="finishedDate">Finished Date</label>
+        <input type="text" formControlName="finishedDate" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="reason">Reason to Override's Time</label>
+        <input type="text" formControlName="reason" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="cost">Cost</label>
+        <input type="text" formControlName="cost" class="form-control" disabled />
+    </div>
+
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Register Service</button>
+        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <a routerLink="/login" class="btn btn-link">Cancel</a>
+    </div>
+</form>

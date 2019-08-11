@@ -1,0 +1,38 @@
+<h1>Hi {{currentUser.fname}}!</h1>
+<p>You're logged in Ger's Garage Website Manager!!</p>
+
+<br /> <br />
+<form [formGroup]="homeForm" (ngSubmit)="onSubmit()">
+
+
+    <div style="color: #007bff !important">
+        <a routerLink="/user" > Register an User </a> <br />
+        <a routerLink="/user"> Register an Employee </a> <br />
+        <a routerLink="/booking"> Register a Booking </a> <br />
+        <a routerLink="/service"> Register a Service </a> <br />
+    </div>
+
+    <br /> <br />
+    <div *ngIf="currentUser.profile_id == 1 ">
+        <h2>All Customers:</h2>
+        <li mat-list-item  *ngFor="let link of dsCustomer"> {{ link.first_name }} {{ link.last_name }} - {{ link.mobile_phone }}</li>
+    
+        <br /> <br />
+
+        <h2>All Employees:</h2>
+        <li mat-list-item  *ngFor="let link of dsEmployee"> {{ link.first_name }} {{ link.last_name }} - {{ link.mobile_phone }}</li>
+    </div>
+    
+     <br /> <br />
+
+     <div *ngIf="currentUser.profile_id == 2 ">
+        <h2>All Bookings:</h2>
+        <a mat-list-item href="www.gmail.com" *ngFor="let link of dsBooking"> {{ link.booking_date }} - {{ link.customer_id }} / {{ link.vehicle_id }}</a>
+     </div>
+
+     <br /> <br />
+     <div *ngIf="currentUser.profile_id == 1  || currentUser.profile_id == 3">
+        <h2>All Services:</h2>
+        <a mat-list-item href="www.gmail.com" *ngFor="let link of dsService"> {{ link.service_type_id }} - {{ link.employee_id }} / {{ link.status }}</a>
+     </div>
+</form>

@@ -1,0 +1,9 @@
+﻿<h1>Hi {{currentUser.fname}}!</h1>
+<p>You're logged in Ger's Garage Website Manager!!</p>
+<h3>All registered users:</h3>
+<ul>
+    <li *ngFor="let user of users">
+        {{user.email}} ({{user.fname}} {{user.lname}})
+        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    </li>+
+</ul>

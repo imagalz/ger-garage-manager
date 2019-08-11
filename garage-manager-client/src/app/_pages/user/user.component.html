@@ -1,0 +1,90 @@
+<h2>User's Register</h2>
+<br /> <br />
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input type="text" formControlName="first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && rControls.first_name.errors }" />
+        <div *ngIf="submitted && rControls.first_name.errors" class="invalid-feedback">
+            <div *ngIf="rControls.first_name.errors.required">First Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input type="text" formControlName="last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && rControls.last_name.errors }" />
+        <div *ngIf="submitted && rControls.last_name.errors" class="invalid-feedback">
+            <div *ngIf="rControls.last_name.errors.required">Last Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && rControls.email.errors }" />
+        <div *ngIf="submitted && rControls.email.errors" class="invalid-feedback">
+            <div *ngIf="rControls.email.errors.required">E-mail is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="mobile_phone">Mobile Phone</label>
+        <input type="text" formControlName="mobile_phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && rControls.mobile_phone.errors }" />
+        <div *ngIf="submitted && rControls.mobile_phone.errors" class="invalid-feedback">
+            <div *ngIf="rControls.mobile_phone.errors.required">Mobile Phone is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="second_phone">Secondary Phone (optional)</label>
+        <input type="text" formControlName="second_phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && rControls.second_phone.errors }" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && rControls.password.errors }" />
+        <div *ngIf="submitted && rControls.password.errors" class="invalid-feedback">
+            <div *ngIf="rControls.password.errors.required">Password is required</div>
+            <div *ngIf="rControls.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+
+    <mat-checkbox *ngIf="!customerProfile" onchange="changeProfile()" formControlName="customer">Customer ?</mat-checkbox>
+
+    <div *ngIf="customerProfile && rControls.customer">
+        <div class="form-group">
+            <label for="license">Vehicle License</label>
+            <input type="text" formControlName="license" class="form-control" [ngClass]="{ 'is-invalid': submitted && rControls.license.errors }" />
+            <div *ngIf="submitted && rControls.license.errors" class="invalid-feedback">
+                <div *ngIf="rControls.license.errors.required">Vehicle license is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="makes">Vehicle Make</label>
+            <select formControlName="vMakes" id="vMakes" >
+                <option *ngFor="let make of makes; let i = index" [value]="make.id">
+                {{make.name}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="types">Vehicle Type</label>
+            <select formControlName="vTypes" id="types">
+                <option *ngFor="let type of types; let i = index" [value]="types[i].id">
+                {{types[i].name}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="engines">Vehicle Engine</label>
+            <select formControlName="vEngine" id="engines">
+                <option *ngFor="let engine of engines; let i = index" [value]="engines[i].id">
+                {{engines[i].name}}
+                </option>
+            </select>
+        </div>
+        
+    </div>
+
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Register</button>
+        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <a routerLink="/login" class="btn btn-link">Cancel</a>
+    </div>
+</form>
