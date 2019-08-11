@@ -11,8 +11,7 @@ import { getLocaleDateFormat, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-booking',
-  templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  templateUrl: './booking.component.html']
 })
 export class BookingComponent implements OnInit {
 
