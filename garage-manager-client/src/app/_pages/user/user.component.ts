@@ -12,8 +12,7 @@ import { VehicleMakeService } from 'src/app/_services/vehicle_make.service';
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css'],
+  templateUrl: './user.component.html'],
   providers: [CustomerService, VehicleMakeService, VehicleTypeService, EngineTypeService, ProfileService]
 })
 export class UserComponent implements OnInit {
