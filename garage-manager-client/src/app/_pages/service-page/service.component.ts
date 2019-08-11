@@ -12,8 +12,7 @@ import { ServiceService } from 'src/app/_services/service.service';
 
 @Component({
   selector: 'app-service',
-  templateUrl: './service.component.html',
-  styleUrls: ['./service.component.css']
+  templateUrl: './service.component.html']
 })
 export class ServiceComponent implements OnInit {
 
